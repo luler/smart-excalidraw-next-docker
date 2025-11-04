@@ -100,4 +100,8 @@ MIT License
 
 ---
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=liujuntao123/smart-excalidraw-next&type=date&legend=top-left)](https://www.star-history.com/#liujuntao123/smart-excalidraw-next&type=date&legend=top-left)
+
 **用自然语言，绘制专业图表** - 让可视化创作回归简单
