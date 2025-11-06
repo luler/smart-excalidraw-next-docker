@@ -18,6 +18,7 @@ ENV LLM_TYPE=openai
 ENV LLM_BASE_URL=https://api.openai.com/v1
 ENV LLM_API_KEY=your-api-key-here
 ENV LLM_MODEL=gpt-4
+ENV LLM_MAX_TOKENS=16384
 
 # 构建生产版本
 RUN npm run build
