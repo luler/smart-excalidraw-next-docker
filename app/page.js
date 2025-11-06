@@ -135,16 +135,7 @@ export default function Home() {
 
   // Handle sending a message (single-turn)
   const handleSendMessage = async (userMessage, chartType = 'auto') => {
-    if (!isConfigValid(config)) {
-      setNotification({
-        isOpen: true,
-        title: '配置提醒',
-        message: '请先配置您的 LLM 提供商',
-        type: 'warning'
-      });
-      setIsConfigManagerOpen(true);
-      return;
-    }
+    // Config validation removed - backend will use environment variables if config not provided
 
     setIsGenerating(true);
     setApiError(null); // Clear previous errors
@@ -378,14 +369,7 @@ export default function Home() {
               </span>
             </div>
           )}
-          <div className="flex items-center space-x-2">
-            <button
-              onClick={() => setIsConfigManagerOpen(true)}
-              className="px-4 py-2 text-sm font-medium text-white bg-gray-900 border border-gray-900 rounded hover:bg-gray-800 transition-colors duration-200"
-            >
-              管理配置
-            </button>
-          </div>
+          {/* 配置管理按钮已禁用 - 使用环境变量配置 */}
         </div>
       </header>
 
