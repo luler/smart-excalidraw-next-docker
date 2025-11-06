@@ -225,9 +225,9 @@ export default function Chat({ onSendMessage, isGenerating }) {
             <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
               {/* Chart Type Selector */}
               <div className="mb-3">
-                <label htmlFor="chart-type-text" className="block text-xs font-medium text-gray-700 mb-1">
+                {/* <label htmlFor="chart-type-text" className="block text-xs font-medium text-gray-700 mb-1">
                   图表类型
-                </label>
+                </label> */}
                 <select
                   id="chart-type-text"
                   value={chartType}
@@ -287,9 +287,9 @@ export default function Chat({ onSendMessage, isGenerating }) {
           <div className="flex-1 flex flex-col items-center  p-4 relative">
             {/* Chart Type Selector */}
             <div className="w-full max-w-md mb-6">
-              <label htmlFor="chart-type-file" className="block text-xs font-medium text-gray-700 mb-1">
+              {/* <label htmlFor="chart-type-file" className="block text-xs font-medium text-gray-700 mb-1">
                 图表类型
-              </label>
+              </label> */}
               <select
                 id="chart-type-file"
                 value={chartType}

@@ -53,7 +53,7 @@ export default function CodeEditor({ code, onChange, onApply, onOptimize, onClea
               </>
             ) : (
               <>
-                <span>应用到画布</span>
+                <span>应用</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

@@ -31,8 +31,7 @@ export default function ContactModal({ isOpen, onClose }) {
           />
 
           <p className="text-gray-500 text-sm text-center">
-            扫描二维码，添加作者微信<br/>
-            限时领取免费 claude-4.5-sonnet key
+            扫描二维码，添加作者微信
           </p>
         </div>
       </div>

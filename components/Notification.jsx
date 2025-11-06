@@ -59,20 +59,20 @@ export default function Notification({
       />
 
       {/* Notification Content */}
-      <div className="relative max-w-md w-full">
+      <div className="relative max-w-xs w-full min-w-0">
         <div className={`border rounded-lg shadow-lg p-4 ${styles.container}`}>
           {/* Header */}
           <div className="flex items-start justify-between">
-            <div className="flex items-center space-x-3 flex-1">
-              <span className={`text-xl ${styles.title}`}>{styles.icon}</span>
-              <div className="flex-1">
+            <div className="flex items-center space-x-3 flex-1 min-w-0">
+              <span className={`text-xl ${styles.title} flex-shrink-0`}>{styles.icon}</span>
+              <div className="flex-1 min-w-0">
                 {title && (
-                  <h3 className={`font-semibold text-sm ${styles.title}`}>
+                  <h3 className={`font-semibold text-xs ${styles.title} break-words`}>
                     {title}
                   </h3>
                 )}
                 {message && (
-                  <p className={`text-sm mt-1 whitespace-pre-line ${styles.message}`}>
+                  <p className={`text-xs mt-1 whitespace-pre-wrap break-words ${styles.message}`}>
                     {message}
                   </p>
                 )}

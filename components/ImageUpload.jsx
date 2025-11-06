@@ -153,9 +153,9 @@ export default function ImageUpload({ onImageSelect, isGenerating, chartType, on
     <div className="flex-1 flex flex-col p-4">
       {/* 图表类型选择器 */}
       <div className="w-full mb-4">
-        <label htmlFor="chart-type-image" className="block text-xs font-medium text-gray-700 mb-1">
+        {/* <label htmlFor="chart-type-image" className="block text-xs font-medium text-gray-700 mb-1">
           图表类型
-        </label>
+        </label> */}
         <select
           id="chart-type-image"
           value={chartType}

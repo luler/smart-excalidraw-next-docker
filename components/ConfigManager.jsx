@@ -36,7 +36,7 @@ export default function ConfigManager({ isOpen, onClose, onConfigSelect }) {
   const loadConfigs = () => {
     try {
       const allConfigs = configManager.getAllConfigs();
-      const activeId = configManager.activeConfigId;
+      const activeId = configManager.getActiveConfigId();
       setConfigs(allConfigs);
       setActiveConfigId(activeId);
     } catch (err) {
