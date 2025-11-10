@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from 'react';
 
+// 内测版本：写死的访问密码（与后端 ACCESS_PASSWORD 相同）
+const HARDCODED_PASSWORD = 'beta-test-2025';
+
 export default function AccessPasswordModal({ isOpen, onClose }) {
   const [password, setPassword] = useState('');
   const [usePassword, setUsePassword] = useState(false);
@@ -11,10 +14,16 @@ export default function AccessPasswordModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedPassword = localStorage.getItem('smart-excalidraw-access-password') || '';
+      // 内测版本：自动填充硬编码的密码
+      const savedPassword = localStorage.getItem('smart-excalidraw-access-password') || HARDCODED_PASSWORD;
       const savedUsePassword = localStorage.getItem('smart-excalidraw-use-password') === 'true';
       setPassword(savedPassword);
       setUsePassword(savedUsePassword);
+
+      // 如果是首次访问，自动保存密码到 localStorage
+      if (!localStorage.getItem('smart-excalidraw-access-password')) {
+        localStorage.setItem('smart-excalidraw-access-password', HARDCODED_PASSWORD);
+      }
     }
   }, [isOpen]);
 

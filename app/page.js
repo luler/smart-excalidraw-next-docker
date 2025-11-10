@@ -50,8 +50,15 @@ export default function Home() {
       setConfig(savedConfig);
     }
 
-    // Load password access state
-    const passwordEnabled = localStorage.getItem('smart-excalidraw-use-password') === 'true';
+    // Load password access state - 内测版本：默认启用密码访问
+    let passwordEnabled = localStorage.getItem('smart-excalidraw-use-password');
+    if (passwordEnabled === null) {
+      // 首次访问，默认启用密码访问
+      passwordEnabled = 'true';
+      localStorage.setItem('smart-excalidraw-use-password', 'true');
+    } else {
+      passwordEnabled = passwordEnabled === 'true';
+    }
     setUsePassword(passwordEnabled);
 
     // Listen for storage changes to sync across tabs

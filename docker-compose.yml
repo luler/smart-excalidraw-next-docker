@@ -6,9 +6,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - LLM_TYPE=openai
-      - LLM_BASE_URL=https://api.openai.com/v1
-      - LLM_API_KEY=your-api-key-here
-      - LLM_MODEL=gpt-4
-      - LLM_MAX_TOKENS=16384
+      - SERVER_LLM_TYPE=openai
+      - SERVER_LLM_BASE_URL=https://api.openai.com/v1
+      - SERVER_LLM_API_KEY=your-api-key-here
+      - SERVER_LLM_MODEL=gpt-4
+      - ACCESS_PASSWORD=beta-test-2025
     restart: unless-stopped
