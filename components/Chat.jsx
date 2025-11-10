@@ -1,42 +1,15 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ImageUpload from './ImageUpload';
 import LoadingOverlay from './LoadingOverlay';
 import { generateImagePrompt } from '@/lib/image-utils';
+import { CHART_TYPES } from '@/lib/constants';
 
-// Chart type options
-// Must match CHART_TYPE_NAMES in lib/prompts.js
-const CHART_TYPES = {
-  auto: '自动',
-  flowchart: '流程图',
-  mindmap: '思维导图',
-  orgchart: '组织架构图',
-  sequence: '时序图',
-  class: 'UML类图',
-  er: 'ER图',
-  gantt: '甘特图',
-  timeline: '时间线',
-  tree: '树形图',
-  network: '网络拓扑图',
-  architecture: '架构图',
-  dataflow: '数据流图',
-  state: '状态图',
-  swimlane: '泳道图',
-  concept: '概念图',
-  fishbone: '鱼骨图',
-  swot: 'SWOT分析图',
-  pyramid: '金字塔图',
-  funnel: '漏斗图',
-  venn: '韦恩图',
-  matrix: '矩阵图',
-  infographic: '信息图'
-};
-
-export default function Chat({ onSendMessage, isGenerating }) {
+export default function Chat({ onSendMessage, isGenerating, initialInput = '', initialChartType = 'auto' }) {
   const [activeTab, setActiveTab] = useState('text'); // 'text', 'file', or 'image'
-  const [input, setInput] = useState('');
-  const [chartType, setChartType] = useState('auto'); // Selected chart type
+  const [input, setInput] = useState(initialInput);
+  const [chartType, setChartType] = useState(initialChartType); // Selected chart type
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileStatus, setFileStatus] = useState(''); // '', 'parsing', 'success', 'error'
   const [fileError, setFileError] = useState('');
@@ -45,12 +18,30 @@ export default function Chat({ onSendMessage, isGenerating }) {
   const [canGenerate, setCanGenerate] = useState(false); // Track if generation is possible
   const textareaRef = useRef(null);
   const fileInputRef = useRef(null);
+  // Track the last submission source to prevent unwanted input syncing
+  const lastSubmitSourceRef = useRef('text'); // 'text' | 'file' | 'image'
 
-  
+  // Sync with parent state changes
+  useEffect(() => {
+    // Only sync initialInput into the text area for text-originated submissions
+    // If the last submission came from file/image, suppress this one update
+    if (lastSubmitSourceRef.current === 'text') {
+      setInput(initialInput);
+    } else {
+      // Reset to allow future legitimate updates (e.g., history selection)
+      lastSubmitSourceRef.current = 'text';
+    }
+  }, [initialInput]);
+
+  useEffect(() => {
+    setChartType(initialChartType);
+  }, [initialChartType]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim() && !isGenerating) {
-      onSendMessage(input.trim(), chartType);
+      lastSubmitSourceRef.current = 'text';
+      onSendMessage(input.trim(), chartType, 'text');
       // Don't clear input - keep it for user reference
     }
   };
@@ -132,7 +123,9 @@ export default function Chat({ onSendMessage, isGenerating }) {
 
   const handleFileGenerate = () => {
     if (fileContent && !isGenerating) {
-      onSendMessage(fileContent, chartType);
+      // Mark source as file to avoid syncing file content into text input
+      lastSubmitSourceRef.current = 'file';
+      onSendMessage(fileContent, chartType, 'file');
       // Reset canGenerate state after initiating generation
       setCanGenerate(false);
     }
@@ -151,6 +144,8 @@ export default function Chat({ onSendMessage, isGenerating }) {
 
   const handleImageSubmit = () => {
     if (selectedImage && !isGenerating) {
+      // Mark source as image to avoid syncing into text input
+      lastSubmitSourceRef.current = 'image';
       // 生成针对图片的提示词
       const imagePrompt = generateImagePrompt(chartType);
 
@@ -161,7 +156,7 @@ export default function Chat({ onSendMessage, isGenerating }) {
         chartType
       };
 
-      onSendMessage(messageData, chartType);
+      onSendMessage(messageData, chartType, 'image');
       // Reset canGenerate state after initiating generation
       setCanGenerate(false);
     }

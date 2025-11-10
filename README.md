@@ -43,7 +43,18 @@ Read the English version: [README_EN.md](README_EN.md)
 
 ## 🚀 快速开始
 
-### 第一步：配置 AI
+### 方式一：使用访问密码
+
+如果服务器管理员已配置访问密码，你可以直接使用服务器端的 LLM 配置，无需自己提供 API Key：
+
+1. 点击右上角的 **"访问密码"** 按钮
+2. 输入管理员提供的访问密码
+3. 点击 **"验证密码"** 测试连接
+4. 勾选 **"启用访问密码"** 并保存
+
+启用后，应用将优先使用服务器端配置，你无需配置自己的 API Key 即可开始创作！
+
+### 方式二：配置自己的 AI
 
 1. 点击右上角的 **"配置 LLM"** 按钮
 2. 选择提供商类型（OpenAI 或 Anthropic）
@@ -80,6 +91,41 @@ pnpm dev
 
 访问 http://localhost:3000 即可使用。
 
+### 配置服务器端 LLM（可选）
+
+如果你想为用户提供统一的 LLM 配置，避免他们自己申请 API Key，可以配置服务器端访问密码功能：
+
+1. 复制环境变量示例文件：
+```bash
+cp .env.example 
+```
+
+2. 在 `.env` 中配置以下变量：
+```bash
+# 访问密码（用户需要输入此密码才能使用服务器端 LLM）
+ACCESS_PASSWORD=your-secure-password
+
+# LLM 提供商类型（openai 或 anthropic）
+SERVER_LLM_TYPE=anthropic
+
+# API 基础 URL
+SERVER_LLM_BASE_URL=https://api.anthropic.com/v1
+
+# API 密钥
+SERVER_LLM_API_KEY=sk-ant-your-key-here
+
+# 模型名称
+SERVER_LLM_MODEL=claude-sonnet-4-5-20250929
+```
+
+3. 重启开发服务器，用户即可通过访问密码使用服务器端配置的 LLM。
+
+**优势：**
+- 用户无需自己申请和配置 API Key
+- 统一管理 API 使用和成本
+- 适合团队或组织内部使用
+- 提供免费体验给用户
+
 ## ❓ 常见问题
 
 **Q: 推荐使用哪个 AI 模型？**
@@ -94,6 +140,12 @@ A: 支持流程图、架构图、时序图、ER 图、思维导图、网络拓�
 **Q: 生成的图表可以修改吗？**
 A: 当然可以！生成后可以在 Excalidraw 画布上自由编辑，包括调整位置、修改样式、添加元素等。
 
+**Q: 什么是访问密码功能？**
+A: 访问密码功能允许服务器管理员配置统一的 LLM，用户只需输入密码即可使用，无需自己申请 API Key。启用访问密码后，将优先使用服务器端配置，忽略本地配置。
+
+**Q: 访问密码和本地配置的优先级是什么？**
+A: 如果启用了访问密码，系统将优先使用服务器端的 LLM 配置。只有在未启用访问密码时，才会使用本地配置的 API Key。
+
 ## 🛠️ 技术栈
 
 Next.js 16 · React 19 · Excalidraw · Tailwind CSS 4 · Monaco Editor
@@ -103,9 +155,21 @@ Next.js 16 · React 19 · Excalidraw · Tailwind CSS 4 · Monaco Editor
 MIT License
 
 ## 联系作者
-微信号： liujuntaoljt 
+微信号： liujuntaoljt
 
 <img width="200"  alt="微信图片_20251103110224_44_85" src="https://github.com/user-attachments/assets/6d8c4da2-af27-4213-b929-0d47fa51e9b5" />
+
+## 💖 赞助
+
+感谢以下赞助者对本项目的支持：
+
+<!-- 赞助者名单 -->
+- API中转站：[AI 网关｜插件世界](https://ai-router.plugins-world.cn)
+
+如果这个项目对你有帮助，欢迎通过以下方式支持：
+- ⭐ 给项目点个 Star
+- 💬 分享给更多需要的人
+- 💰 成为赞助者（联系作者微信）
 
 ---
 
