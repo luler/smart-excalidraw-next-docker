@@ -3,7 +3,8 @@
 
 
 🚀🚀🚀全面升级的新版本，更强大好用的绘图工具
-https://smart-draw.aizhi.site/**
+
+https://smart-draw.aizhi.site
 
 🚀🚀🚀新版本github地址：https://github.com/liujuntao123/smart-draw
 
