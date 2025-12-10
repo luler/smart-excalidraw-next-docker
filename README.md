@@ -1,11 +1,23 @@
 # Smart Excalidraw
-
 > **用自然语言，绘制专业图表**
 
-## 在线网站
-进入在线网站直接使用：https://smart-excalidraw.aizhi.site/
 
-🚀🚀🚀 限时福利
+🚀🚀🚀全面升级的新版本，更强大好用的绘图工具
+
+https://smart-draw.aizhi.site
+
+🚀🚀🚀新版本github地址：
+
+https://github.com/liujuntao123/smart-draw
+
+
+一图介绍
+
+<img width="2816" height="1536" alt="Gemini_Generated_Image_2drs882drs882drs" src="https://github.com/user-attachments/assets/42d7a2ec-b56b-420c-becb-c598179d4541" />
+
+
+
+🚀 限时福利
 
 添加底部作者微信进群可领取免费claude-4.5-sonnet key
 
@@ -170,6 +182,10 @@ MIT License
 - ⭐ 给项目点个 Star
 - 💬 分享给更多需要的人
 - 💰 成为赞助者（联系作者微信）
+
+## 友情链接
+
+- https://github.com/ZhangQL2824/auto-drawio.git
 
 ---
 

@@ -12,6 +12,7 @@ import Notification from '@/components/Notification';
 import { getConfig, isConfigValid } from '@/lib/config';
 import { optimizeExcalidrawCode } from '@/lib/optimizeArrows';
 import { historyManager } from '@/lib/history-manager';
+import { repairJsonClosure } from '@/lib/json-repair';
 
 // Dynamically import ExcalidrawCanvas to avoid SSR issues
 const ExcalidrawCanvas = dynamic(() => import('@/components/ExcalidrawCanvas'), {
@@ -87,7 +88,7 @@ export default function Home() {
     };
   }, []);
 
-  // Post-process Excalidraw code: remove markdown wrappers and fix unescaped quotes
+  // Post-process Excalidraw code: remove markdown wrappers, repair closures, and fix unescaped quotes
   const postProcessExcalidrawCode = (code) => {
     if (!code || typeof code !== 'string') return code;
     
@@ -97,6 +98,9 @@ export default function Home() {
     processed = processed.replace(/^```(?:json|javascript|js)?\s*\n?/i, '');
     processed = processed.replace(/\n?```\s*$/, '');
     processed = processed.trim();
+    
+    // Step 1.5: Repair common JSON closure issues (missing quotes/brackets at end)
+    processed = repairJsonClosure(processed);
     
     // Step 2: Fix unescaped double quotes within JSON string values
     // This is a complex task - we need to be careful not to break valid JSON structure
@@ -110,6 +114,8 @@ export default function Home() {
       // This regex finds string values and fixes unescaped quotes within them
       // It looks for: "key": "value with "unescaped" quotes"
       processed = fixUnescapedQuotes(processed);
+      // After fixing quotes, attempt a final repair of closures
+      processed = repairJsonClosure(processed);
       return processed;
     }
   };
