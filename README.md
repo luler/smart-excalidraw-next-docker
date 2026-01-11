@@ -18,11 +18,6 @@ https://github.com/liujuntao123/ai-draw-nexus
 ![generated-image-1766740104116](https://github.com/user-attachments/assets/f94e0702-6442-40f7-8b4a-ff4aabe68d5b)
 
 
-
-🚀 限时福利
-
-添加底部作者微信进群可领取免费访问密码，畅用claude 最新模型。
-
 ## English Version
 Read the English version: [README_EN.md](README_EN.md)
 
