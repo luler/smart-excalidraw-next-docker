@@ -2,24 +2,21 @@
 > **用自然语言，绘制专业图表**
 
 
-🚀🚀🚀全面升级的新版本，更强大好用的绘图工具
+🚀🚀🚀全面升级的新版本，更强大好用的绘图平台
 
-https://smart-draw.aizhi.site
+https://ai-draw-nexus.aizhi.site
 
 🚀🚀🚀新版本github地址：
 
-https://github.com/liujuntao123/smart-draw
+https://github.com/liujuntao123/ai-draw-nexus
 
 
 一图介绍
-
-<img width="2816" height="1536" alt="Gemini_Generated_Image_2drs882drs882drs" src="https://github.com/user-attachments/assets/42d7a2ec-b56b-420c-becb-c598179d4541" />
-
+![generated-image-1766739999192](https://github.com/user-attachments/assets/6438a45f-1eba-4b63-a4fa-50cd45b718fc)
 
 
-🚀 限时福利
+![generated-image-1766740104116](https://github.com/user-attachments/assets/f94e0702-6442-40f7-8b4a-ff4aabe68d5b)
 
-添加底部作者微信进群可领取免费claude-4.5-sonnet key
 
 ## English Version
 Read the English version: [README_EN.md](README_EN.md)
